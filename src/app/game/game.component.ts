@@ -9,19 +9,30 @@ import { Game } from 'src/models/game';
 
 export class GameComponent implements OnInit{
   pickCardAnimation = false;
+  currentCard: string = '';
   game?: Game; //Das Fragezeichen ist von mir - Bei Junus geht es ohne, warum auch immer
+
+  ngOnInit(): void{
+    this.newGame(); 
+  }
 
   newGame(){
     this.game = new Game();
+    console.log(this.game);
   }
 
-  ngOnInit(): void{
-    this.newGame();
-    console.log(this.game);
+
+
+  takeCard(){
+    if (!this.pickCardAnimation) {
+      this.currentCard = this.game?.stack.pop() as string;
+    this.pickCardAnimation = true;
+    setTimeout(() => {
+      this.pickCardAnimation = false;
+    }, 1500);
+    }
     
   }
 
-  takeCard(){
-    this.pickCardAnimation = true;
-  }
+
 }
