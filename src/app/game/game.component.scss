@@ -30,7 +30,7 @@
 }
 
 .played-card {
-  transform: scale(1.05) translateX(180px) translateY(-150px) rotate(-10deg);
+  transform: scale(1) translateX(180px) translateY(-150px) rotate(-10deg);
 }
 
 @keyframes pick-card-animation {
@@ -46,4 +46,22 @@
   100% {
     transform: scale(1) translateX(180px) translateY(-150px) rotate(-10deg);
   }
+}
+
+.player-position{
+  position: absolute;
+  right: 0;
+}
+
+.btn-add{
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+}
+
+.pin-bottom{
+  position: absolute;
+  bottom: 60px;
+  left: 240px;
+  right: 240px;
 }
