@@ -13,9 +13,7 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   game?: Game; //Das Fragezeichen ist von ChatGPT - Bei Junus geht es ohne, warum auch immer
 
-  constructor(public dialog: MatDialog){
-
-  }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.newGame();
@@ -32,8 +30,9 @@ export class GameComponent implements OnInit {
 
       this.pickCardAnimation = true;
 
-      this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
-      
+      this.game.currentPlayer =
+        (this.game.currentPlayer + 1) % this.game.players.length;
+
       setTimeout(() => {
         this.pickCardAnimation = false;
         this.game?.playedCards.push(this.currentCard);
@@ -44,10 +43,10 @@ export class GameComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(name => {
-      console.log(name);
-      this.game?.players.push(name);
+    dialogRef.afterClosed().subscribe((name) => {
+      if (name && name.length > 0) {
+        this.game?.players.push(name);
+      }
     });
   }
-
 }
